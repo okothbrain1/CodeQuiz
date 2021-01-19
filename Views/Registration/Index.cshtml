@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CodeQuizApp.Models.Registration>
+
+@{
+    ViewData["Title"] = "Registrations";
+}
+
+<h2>Registrations Management</h2>
+
+<h5>
+    <a asp-action="Create"><i class="fa fa-user-plus"></i> Register</a>
+</h5>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.CourseID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.ID)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.EnrollmentID"><i class="fa fa-edit"></i> Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.EnrollmentID"><i class="fa fa-info-circle"></i> Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.EnrollmentID" style="color:darkred"><i class="fa fa-trash"></i> Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

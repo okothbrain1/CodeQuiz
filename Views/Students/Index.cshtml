@@ -1,0 +1,47 @@
+﻿@model IEnumerable<NmirosTest.Models.Student>
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<h2>Students Management</h2>
+
+<h5>
+    <a asp-action="Create"><i class="fa fa-user-plus"></i> Create New Student</a>
+</h5>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstMidName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnrollmentDate)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstMidName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID"><i class="fa fa-edit"></i> Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID"><i class="fa fa-info-circle"></i> Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID" style="color:darkred"><i class="fa fa-trash"></i> Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

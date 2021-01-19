@@ -1,0 +1,42 @@
+﻿@model IEnumerable<CodeQuizApp.Models.CourseUnit>
+
+@{
+    ViewData["Title"] = "CourseUnits";
+}
+
+<h2>Courses Management</h2>
+
+<h5>
+    <a asp-action="Create"><i class="fa fa-id-badge"></i> Create New Course Unit</a>
+</h5>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Credits)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Credits)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CourseID"><i class="fa fa-edit"></i> Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.CourseID"><i class="fa fa-info-circle"></i> Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CourseID" style="color:darkred"><i class="fa fa-trash"></i> Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
